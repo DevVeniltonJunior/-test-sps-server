@@ -50,14 +50,14 @@ export class UserRepository {
       });
     }
 
-    pagination = {
+    const pagination = {
       totalRows: filteredUsers.length,
       totalPages: limit ? Math.ceil(filteredUsers.length / limit) : 1,
       currentPage: page || 1,
       rowsPerPage: limit || filteredUsers.length
     }
 
-    limitedData = limit ? filteredUsers.slice((pagination.currentPage - 1) * limit, pagination.currentPage * limit) : filteredUsers;
+    const limitedData = limit ? filteredUsers.slice((pagination.currentPage - 1) * limit, pagination.currentPage * limit) : filteredUsers;
 
     return {
       data: limitedData,
