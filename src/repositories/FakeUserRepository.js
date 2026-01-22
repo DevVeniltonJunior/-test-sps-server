@@ -14,7 +14,8 @@ export class UserRepository {
       name: 'admin',
       email: 'admin@spsgroup.com.br',
       type: 'admin',
-      password: '1234'
+      password: '1234',
+      createdAt: new Date().toISOString(),
     });
   }
 
@@ -66,8 +67,9 @@ export class UserRepository {
   }
 
   async create(user) {
-    this.users.push(user.toJSON());
-    return user.toJSON();
+    const userData = { ...user.toJSON(), createdAt: new Date().toISOString() };
+    this.users.push(userData);
+    return userData;
   }
 
   async update(id, updatedFields) {
