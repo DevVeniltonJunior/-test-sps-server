@@ -11,9 +11,12 @@ export class DeleteUserController {
       }
 
       const userId = req.params.id;
-      if (!userId ) {
-        throw new BadRequestError('User ID is required');
-      }
+      if (!userId ) throw new BadRequestError('User ID is required');
+
+      if (currentUser.id === userId) throw new BadRequestError('Admins cannot delete their own accounts');
+
+      if (userId === "4453f616-c96d-4d19-af2a-a6bf5258ebd5") throw new BadRequestError('Cannot delete the root admin account');
+
 
       await new DeleteUser().execute(userId);
 
