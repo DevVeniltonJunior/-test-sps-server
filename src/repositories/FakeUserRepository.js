@@ -43,9 +43,7 @@ export class UserRepository {
 
   async delete(id) {
     const userIndex = this.users.findIndex(user => user.id === id);
-    if (userIndex === -1) {
-      return false;
-    }
+    if (userIndex === -1) throw new NotFoundError('User not found');
     this.users.splice(userIndex, 1);
     return true;
   }
