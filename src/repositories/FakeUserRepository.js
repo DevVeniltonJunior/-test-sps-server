@@ -1,5 +1,10 @@
 import { NotFoundError } from '../utils';
 
+export const DEFAULT_LIMIT = 10;
+export const DEFAULT_ORDER_BY = 'createdAt:desc';
+export const DEFAULT_FILTERS = {};
+export const DEFAULT_PAGE = 1;
+
 export class UserRepository {
   constructor() {
     this.users = [];
@@ -21,8 +26,43 @@ export class UserRepository {
     return this.users.find(user => user.id === id) || null;
   }
 
-  async list() {
-    return this.users;
+  async list(filters = DEFAULT_FILTERS, orderBy = DEFAULT_ORDER_BY, limit = DEFAULT_LIMIT, page = DEFAULT_PAGE) {
+    let filteredUsers = this.users;
+
+    if (filters.name) {
+      filteredUsers = filteredUsers.filter(user => user.name.includes(filters.name));
+    }
+
+    if (filters.email) {
+      filteredUsers = filteredUsers.filter(user => user.email.includes(filters.email));
+    }
+
+    if (filters.type) {
+      filteredUsers = filteredUsers.filter(user => user.type === filters.type);
+    }
+
+    if (orderBy) {
+      const [key, order] = orderBy.split(':');
+      filteredUsers = filteredUsers.sort((a, b) => {
+        if (a[key] < b[key]) return order === 'desc' ? 1 : -1;
+        if (a[key] > b[key]) return order === 'desc' ? -1 : 1;
+        return 0;
+      });
+    }
+
+    pagination = {
+      totalRows: filteredUsers.length,
+      totalPages: limit ? Math.ceil(filteredUsers.length / limit) : 1,
+      currentPage: page || 1,
+      rowsPerPage: limit || filteredUsers.length
+    }
+
+    limitedData = limit ? filteredUsers.slice((pagination.currentPage - 1) * limit, pagination.currentPage * limit) : filteredUsers;
+
+    return {
+      data: limitedData,
+      pagination: pagination
+    }
   }
 
   async create(user) {
