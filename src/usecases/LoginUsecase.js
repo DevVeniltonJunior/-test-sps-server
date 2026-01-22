@@ -1,0 +1,18 @@
+import { fakeUserRepository } from '../repositories/index.js';
+import { BadRequestError, NotFoundError } from '../utils/index.js';
+
+export class LoginUsecase {
+  repository = fakeUserRepository;
+  async execute(email, password) {
+    try {
+      const user = await this.repository.findByEmail(email);
+      if (!user) throw new NotFoundError('User not found');
+      if (user.password !== password) throw new BadRequestError('Invalid credentials');
+  
+      return user;
+    }
+    catch (error) {
+      throw error;
+    }
+  }
+}
