@@ -8,7 +8,7 @@ routes.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-routes.get("/login", async (req, res) => {
+routes.post("/login", async (req, res) => {
   const result = await LoginController.handle(req);
   res.status(result.statusCode).json(result.body);
 });
