@@ -19,10 +19,10 @@ Este repositório contém controladores, use cases, serviços e repositórios fa
    git clone https://github.com/DevVeniltonJunior/-test-sps-server.git
    cd -test-sps-server
 
-2. Instale dependências:
+3. Instale dependências:
 
    npm install
-  3. Crie um arquivo `.env` na raiz do projeto com as variáveis mínimas necessárias. Exemplo:
+  4. Crie um arquivo `.env` na raiz do projeto com as variáveis mínimas necessárias. Exemplo:
 
   ```
   PORT=3000
