@@ -11,15 +11,11 @@ export class UserRepository {
   }
 
   async findByEmail(email) {
-    const user = this.users.find(user => user.email === email) || null;
-    if (!user) throw new NotFoundError('User not found');
-    return user;
+    return this.users.find(user => user.email === email) || null;
   }
 
   async findById(id) {
-    const user = this.users.find(user => user.id === id) || null;
-    if (!user) throw new NotFoundError('User not found');
-    return user;
+    return this.users.find(user => user.id === id) || null;
   }
 
   async list() {
