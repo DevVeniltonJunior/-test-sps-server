@@ -45,4 +45,28 @@ describe('[Controllers] CreateUser', () => {
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error', 'Name, email and password are required');
   });
+
+  it('should not allow non-admin users to create a new user', async () => {
+    const req = HttpRequestMock(
+      body={
+        name: 'Regular User',
+        email: 'regular@example.com',
+        type: 'user',
+        password: '123456'
+      },
+      {},
+      {},
+      currentUser={
+        id: 'regular-user-id',
+        name: 'Regular User',
+        email: 'regular@example.com',
+        type: 'user'
+      }
+    );
+
+    const res = await CreateUserController.handle(req);
+    
+    expect(res.statusCode).toBe(403);
+    expect(res.body).toHaveProperty('error', 'Only admins can create new users');
+  });
 });
