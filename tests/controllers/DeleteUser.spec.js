@@ -9,7 +9,7 @@ describe('[Controllers] DeleteUser', () => {
     const req = HttpRequestMock(
       body={},
       params={
-        id: "4453f616-c96d-4d19-af2a-a6bf5258ebd5"
+        id: "4453f616-c96d-4d19-af2a-a6bf5258eb65"
       }
     )
 
@@ -73,4 +73,46 @@ describe('[Controllers] DeleteUser', () => {
     expect(res.statusCode).toBe(403);
     expect(res.body).toHaveProperty('error', 'Only admins can delete new users');
   });
+
+  it('should not allow admin users to delete their own accounts', async () => {
+    const req = HttpRequestMock(
+      body={},
+      params={
+        id: "admin-user-id"
+      },
+      {},
+      currentUser={
+        id: 'admin-user-id',
+        name: 'Admin User',
+        email: 'admin@example.com',
+        type: 'admin'
+      }
+    );
+
+    const res = await DeleteUserController.handle(req);
+    
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty('error', 'Admins cannot delete their own accounts');
+  });
+
+  it('should not allow deletion of the root admin account', async () => {
+    const req = HttpRequestMock(
+      body={},
+      params={
+        id: "4453f616-c96d-4d19-af2a-a6bf5258ebd5"
+      },
+      {},
+      currentUser={
+        id: 'some-admin-id',
+        name: 'Admin User',
+        email: 'admin@example.com',
+        type: 'admin'
+      }
+    );
+
+    const res = await DeleteUserController.handle(req);
+    
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty('error', 'Cannot delete the root admin account');
+  }); 
 });
