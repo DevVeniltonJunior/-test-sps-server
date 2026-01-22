@@ -1,10 +1,15 @@
 import { CreateUser } from "../usecases";
-import { BadRequestError } from "../utils";
+import { BadRequestError, NotAllowedError } from "../utils";
 import { User } from "../models";
 
 export class CreateUserController {
   static async handle(req) {
     try {
+      const currentUser = req.currentUser;
+      if (!currentUser || currentUser.type !== 'admin') {
+        throw new NotAllowedError('Only admins can create new users');
+      }
+
       const { name, email, type, password } = req.body;
       if (!name || !email || !password) {
         throw new BadRequestError('Name, email and password are required');

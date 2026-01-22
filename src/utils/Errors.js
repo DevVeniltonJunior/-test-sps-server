@@ -29,3 +29,11 @@ export class NotFoundError extends Error {
     this.statusCode = 404;
   }
 }
+
+export class NotAllowedError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'NotAllowedError';
+    this.statusCode = 403;
+  }
+}
