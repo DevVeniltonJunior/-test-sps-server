@@ -9,7 +9,7 @@ describe('[Models] User', () => {
     expect(user.name).toBe('John Doe');
     expect(user.email).toBe('john.doe@example.com');
     expect(user.password).toBe('123456');
-    expect(user.role).toBe('user');
+    expect(user.type).toBe('user');
   });
 
   it('should convert user instance to JSON correctly', () => {
@@ -20,6 +20,6 @@ describe('[Models] User', () => {
     expect(userJson.name).toBe('Jane Doe');
     expect(userJson.email).toBe('jane.doe@example.com');
     expect(userJson.password).toBe('123456');
-    expect(userJson.role).toBe('user');
+    expect(userJson.type).toBe('user');
   });
 });

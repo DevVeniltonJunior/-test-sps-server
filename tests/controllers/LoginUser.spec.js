@@ -1,6 +1,6 @@
 import { it, jest } from '@jest/globals';
 import { LoginUsecase } from '../../src/usecases';
-import { AuthService } from '../../src/services';
+import { TokenService } from '../../src/services';
 import { LoginController } from '../../src/controllers';
 import { HttpRequestMock } from '../utils';
 import { BadRequestError } from '../../src/utils';
@@ -14,11 +14,11 @@ describe('[Controllers] Login', () => {
     jest.spyOn(LoginUsecase.prototype, 'execute').mockResolvedValue({
       name: 'admin',
       email: 'admin@spsgroup.com',
-      role: 'admin',
+      type: 'admin',
       password: '1234'
     });
 
-    jest.spyOn(AuthService.prototype, 'generateToken').mockReturnValue('valid-token');
+    jest.spyOn(TokenService.prototype, 'generateToken').mockReturnValue('valid-token');
 
     const req = HttpRequestMock(
       body={

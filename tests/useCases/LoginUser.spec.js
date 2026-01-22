@@ -8,7 +8,7 @@ describe("[Usecase] LoginUsecase", () => {
     jest.spyOn(UserRepository.prototype, 'findByEmail').mockResolvedValue({
       name: 'admin',
       email: 'test@example.com',
-      role: 'admin',
+      type: 'admin',
       password: '123456'
     });
 
@@ -22,7 +22,7 @@ describe("[Usecase] LoginUsecase", () => {
     jest.spyOn(UserRepository.prototype, 'findByEmail').mockResolvedValue({
       name: 'admin',
       email: 'test@example.com',
-      role: 'admin',
+      type: 'admin',
       password: '123456'
     });
 

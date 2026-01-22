@@ -19,7 +19,7 @@ export class TokenService {
       id: user.id,
       name: user.name,
       email: user.email,
-      role: user.role
+      type: user.type
     }
     
     return jwt.sign(

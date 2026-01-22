@@ -25,7 +25,7 @@ export function authMiddleware(req, res, next) {
     id: decoded.id,
     name: decoded.name,
     email: decoded.email,
-    role: decoded.role
+    type: decoded.type
   };
 
   next();
