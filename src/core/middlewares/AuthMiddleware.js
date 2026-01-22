@@ -19,7 +19,7 @@ export function authMiddleware(req, res, next) {
   
     const decoded = tokenService.verifyToken(token);
   
-    req.user = {
+    req.currentUser = {
       id: decoded.id,
       name: decoded.name,
       email: decoded.email,
