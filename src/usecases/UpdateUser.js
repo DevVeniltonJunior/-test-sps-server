@@ -1,7 +1,7 @@
-import { UserRepository } from '../repositories/index.js';
+import { fakeUserRepository } from '../repositories/index.js';
 
 export class UpdateUser {
-  repository = new UserRepository();
+  repository = fakeUserRepository;
 
   async execute(userId, userDTO) {
     try {

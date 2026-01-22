@@ -18,12 +18,12 @@ routes.post("/user", authMiddleware, async (req, res) => {
   res.status(result.statusCode).json(result.body);
 });
 
-routes.put("/user", authMiddleware, async (req, res) => {
+routes.put("/user/:id", authMiddleware, async (req, res) => {
   const result = await UpdateUserController.handle(req);
   res.status(result.statusCode).json(result.body);
 });
 
-routes.delete("/user", authMiddleware, async (req, res) => {
+routes.delete("/user/:id", authMiddleware, async (req, res) => {
   const result = await DeleteUserController.handle(req);
   res.status(result.statusCode).json(result.body);
 });

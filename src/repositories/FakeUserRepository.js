@@ -90,3 +90,5 @@ export class UserRepository {
     return true;
   }
 }
+
+export const fakeUserRepository = new UserRepository();

@@ -1,9 +1,8 @@
-import { UserRepository } from '../repositories/index.js';
+import { fakeUserRepository } from '../repositories/index.js';
 import { BadRequestError } from '../utils/index.js';
 
 export class CreateUser {
-  repository = new UserRepository();
-
+  repository = fakeUserRepository;
   async execute(user) {
     try {
       const existingUser = await this.repository.findByEmail(user.email);

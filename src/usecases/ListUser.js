@@ -1,7 +1,7 @@
-import { UserRepository, DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_FILTERS, DEFAULT_PAGE } from '../repositories/index.js';
+import { fakeUserRepository, DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_FILTERS, DEFAULT_PAGE } from '../repositories/index.js';
 
 export class ListUser {
-  repository = new UserRepository();
+  repository = fakeUserRepository;
 
   async execute(filters=DEFAULT_FILTERS, orderBy=DEFAULT_ORDER_BY, limit=DEFAULT_LIMIT, page=DEFAULT_PAGE) {
     try {
