@@ -1,5 +1,5 @@
-import { TokenService } from '../../services';
-import { UnauthorizedError } from '../../utils';
+import { TokenService } from '../../services/index.js';
+import { UnauthorizedError } from '../../utils/index.js';
 
 const tokenService = new TokenService({
   jwtSecret: process.env.JWT_SECRET || undefined,

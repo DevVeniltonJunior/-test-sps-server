@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import { randomBytes } from "crypto"
-import { UnauthorizedError } from "../utils";
+import { UnauthorizedError } from "../utils/index.js";
 
 const DEFAULT_TOKEN_EXPIRY_HOURS = 24;
 

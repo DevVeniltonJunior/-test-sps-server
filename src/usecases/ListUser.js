@@ -1,4 +1,4 @@
-import { UserRepository, DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_FILTERS, DEFAULT_PAGE } from '../repositories';
+import { UserRepository, DEFAULT_LIMIT, DEFAULT_ORDER_BY, DEFAULT_FILTERS, DEFAULT_PAGE } from '../repositories/index.js';
 
 export class ListUser {
   repository = new UserRepository();

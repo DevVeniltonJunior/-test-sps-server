@@ -1,6 +1,6 @@
-import { UpdateUser } from "../usecases";
-import { BadRequestError, NotAllowedError } from "../utils";
-import { User } from "../models";
+import { UpdateUser } from "../usecases/index.js";
+import { BadRequestError, NotAllowedError } from "../utils/index.js";
+import { User } from "../models/index.js";
 
 export class UpdateUserController {
   static async handle(req) {

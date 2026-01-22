@@ -1,6 +1,6 @@
-import { BadRequestError, EmailValidator } from '../utils';
-import { LoginUsecase } from '../usecases';
-import { TokenService } from '../services';
+import { BadRequestError, EmailValidator } from '../utils/index.js';
+import { LoginUsecase } from '../usecases/index.js';
+import { TokenService } from '../services/index.js';
 
 export class LoginController {
   static async handle(req) {

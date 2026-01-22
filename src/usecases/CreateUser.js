@@ -1,5 +1,5 @@
-import { UserRepository } from '../repositories';
-import { BadRequestError } from '../utils';
+import { UserRepository } from '../repositories/index.js';
+import { BadRequestError } from '../utils/index.js';
 
 export class CreateUser {
   repository = new UserRepository();

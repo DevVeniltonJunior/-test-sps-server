@@ -1,4 +1,4 @@
-import { UserRepository } from '../repositories';
+import { UserRepository } from '../repositories/index.js';
 
 export class UpdateUser {
   repository = new UserRepository();

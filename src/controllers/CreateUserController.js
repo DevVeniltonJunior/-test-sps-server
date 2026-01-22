@@ -1,6 +1,6 @@
-import { CreateUser } from "../usecases";
-import { BadRequestError, NotAllowedError } from "../utils";
-import { User } from "../models";
+import { CreateUser } from "../usecases/index.js";
+import { BadRequestError, NotAllowedError } from "../utils/index.js";
+import { User } from "../models/index.js";
 
 export class CreateUserController {
   static async handle(req) {

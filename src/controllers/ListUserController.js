@@ -1,4 +1,4 @@
-import { ListUser } from "../usecases";
+import { ListUser } from "../usecases/index.js";
 
 export class ListUserController {
   static async handle(req) {

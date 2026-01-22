@@ -1,4 +1,4 @@
-import { UserRepository } from '../repositories';
+import { UserRepository } from '../repositories/index.js';
 
 export class DeleteUser {
   repository = new UserRepository();

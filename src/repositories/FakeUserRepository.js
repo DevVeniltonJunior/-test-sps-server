@@ -1,4 +1,4 @@
-import { NotFoundError } from '../utils';
+import { NotFoundError } from '../utils/index.js';
 
 export const DEFAULT_LIMIT = 10;
 export const DEFAULT_ORDER_BY = 'createdAt:desc';

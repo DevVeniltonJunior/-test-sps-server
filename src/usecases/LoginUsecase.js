@@ -1,5 +1,5 @@
-import { UserRepository } from '../repositories';
-import { BadRequestError, NotFoundError } from '../utils';
+import { UserRepository } from '../repositories/index.js';
+import { BadRequestError, NotFoundError } from '../utils/index.js';
 
 export class LoginUsecase {
   repository = new UserRepository();
