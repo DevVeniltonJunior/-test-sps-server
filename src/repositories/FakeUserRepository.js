@@ -1,13 +1,16 @@
-import { User } from '../models';
 import { NotFoundError } from '../utils';
 
 export class UserRepository {
   constructor() {
     this.users = [];
 
-    this.users.push(
-      new User('admin', 'admin@spsgroup.com.br', 'admin', '1234').toJSON()
-    );
+    this.users.push({
+      id: "4453f616-c96d-4d19-af2a-a6bf5258ebd5",
+      name: 'admin',
+      email: 'admin@spsgroup.com.br',
+      type: 'admin',
+      password: '1234'
+    });
   }
 
   async findByEmail(email) {
@@ -29,6 +32,7 @@ export class UserRepository {
 
   async update(id, updatedFields) {
     const userIndex = this.users.findIndex(user => user.id === id);
+
     if (userIndex === -1) throw new NotFoundError('User not found');
     this.users[userIndex] = {
       ...this.users[userIndex],
