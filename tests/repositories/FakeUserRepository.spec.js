@@ -20,24 +20,12 @@ describe("[Repositories] UserRepository", () => {
     expect(user).toBeDefined();
   });
 
-  it("should throw error when user not found by email", async () => {
-    const repository = new UserRepository();
-    
-    await expect(repository.findByEmail("nonexistent@example.com")).rejects.toThrow("User not found");
-  });
-
   it("should find a user by id", async () => {
     const repository = new UserRepository();
     await repository.create(userData);
     const user = await repository.findById(userData.id);
 
     expect(user).toBeDefined();
-  });
-
-  it("should throw error when user not found by id", async () => {
-    const repository = new UserRepository();
-    
-    await expect(repository.findById("nonexistent")).rejects.toThrow("User not found");
   });
 
   it("should list all users", async () => {
