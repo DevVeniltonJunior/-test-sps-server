@@ -17,6 +17,7 @@ Este repositório contém controladores, use cases, serviços e repositórios fa
 1. Clone o repositório:
 
    git clone https://github.com/DevVeniltonJunior/-test-sps-server.git
+
    cd -test-sps-server
 
 3. Instale dependências:
