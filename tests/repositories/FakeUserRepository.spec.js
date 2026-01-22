@@ -34,7 +34,18 @@ describe("[Repositories] UserRepository", () => {
     const users = await repository.list();
     
     expect(users).toBeDefined();
-    expect(users.length).toBeGreaterThan(1);
+    expect(users.pagination).toBeDefined();
+    expect(users.data.length).toBeGreaterThan(1);
+  });
+
+  it("should list users with filters", async () => {
+    const repository = new UserRepository();
+    await repository.create(userData);
+    const filters = { name: "John" };
+    const users = await repository.list(filters);
+    
+    expect(users).toBeDefined();
+    expect(users.data.length).toBeGreaterThan(0);
   });
 
   it("should update successfully", async () => {
